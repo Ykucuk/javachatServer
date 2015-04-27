@@ -9,6 +9,7 @@ package sunucu;
  *
  * @author Yasin
  */
+import gui.mainWindow;
 import java.sql.*;
 
 public class Veritabani {
@@ -18,16 +19,19 @@ public class Veritabani {
     public static String query;
     public static ResultSet sonuc;
     public static boolean durum;
-
+    
+    private mainWindow mainWindow = null;
+    
     String isim = "root";
     String sifre = "";
     String adres = "jdbc:mysql://localhost:3306/bilgiagi";
 
-    public Veritabani() {
+    public Veritabani(mainWindow ml) {
         try {
+            this.mainWindow = ml;
             Class.forName("com.mysql.jdbc.Driver");
             baglanti = DriverManager.getConnection(adres, isim, sifre);
-            System.out.println("veritabani olusturuldu.");
+            this.mainWindow.OutputAdd("Veritabani baglantisi basarili bir sekilde saglandi.");
             durum = true;
         } catch (Exception e) {
             System.err.println(e.getMessage());
@@ -40,11 +44,12 @@ public class Veritabani {
 
     public static void YeniHesapOlustur(String isim, String sifre) {
         try {
-            query = "INSERT INTO hesap (isim, sifre, rank) VALUES (?,?,?)";
+            query = "INSERT INTO hesap (isim, sifre, rank) VALUES (?,?,?,?)";
             sorgu = baglanti.prepareStatement(query);
             sorgu.setString(1, isim);
             sorgu.setString(2, sifre);
             sorgu.setString(3, "default");
+            sorgu.setInt(4, 0);
             sorgu.execute();
             System.out.println("Basarili bir sekilde eklendi");
 
@@ -81,10 +86,10 @@ public class Veritabani {
             sorgu.setString(1, isim);
             sonuc = sorgu.executeQuery();
             sonuc.next();
-            if(sonuc.getBoolean("aktif")) {
-                return false;
-            } else {
+            if (sonuc.getInt("aktif") == 1) {
                 return true;
+            } else {
+                return false;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -98,7 +103,7 @@ public class Veritabani {
             System.out.println("calistim..." + isim);
             query = "UPDATE hesap SET aktif = ?  WHERE isim = ?";
             sorgu = baglanti.prepareStatement(query);
-            sorgu.setInt(1, 0);
+            sorgu.setInt(1, 1);
             sorgu.setString(2, isim);
             sorgu.execute();
         } catch (Exception e) {
@@ -108,10 +113,10 @@ public class Veritabani {
 
     public static void KullaniciDurumuDeAktif(String isim) {
         try {
-            
+
             query = "UPDATE hesap SET aktif = ?  WHERE isim = ?";
             sorgu = baglanti.prepareStatement(query);
-            sorgu.setInt(1, 1);
+            sorgu.setInt(1, 0);
             sorgu.setString(2, isim);
             sorgu.execute();
         } catch (Exception e) {
