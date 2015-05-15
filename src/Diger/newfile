@@ -1,0 +1,18 @@
+        this.kullaniciBilgileriOlustur.setIsim(jTextField2.getText());
+        this.kullaniciBilgileriOlustur.setSoyisim(jTextField3.getText());
+        this.kullaniciBilgileriOlustur.setTelefon(jTextField4.getText());
+        this.kullaniciBilgileriOlustur.setTelefon2(jTextField5.getText());
+
+        this.kullaniciBilgileriOlustur.setEmail(jTextField6.getText());
+        this.kullaniciBilgileriOlustur.setUlke(jTextField7.getText());
+        this.kullaniciBilgileriOlustur.setSehir(jTextField8.getText());
+        this.kullaniciBilgileriOlustur.setAdress(jTextField9.getText());
+
+        this.kullaniciBilgileriOlustur.setHesapAdi(jTextField10.getText());
+        this.kullaniciBilgileriOlustur.setHesapSifre(jTextField11.getText());
+        this.kullaniciBilgileriOlustur.setHesapOlusturmaTarih(jTextField12.getText());
+        this.kullaniciBilgileriOlustur.setHesapSonGiris(jTextField13.getText());
+        this.kullaniciBilgileriOlustur.setHesapDurum(jTextField14.getText());
+        this.kullaniciBilgileriOlustur.setHesapRutbe(jTextField15.getText());
+        this.kullaniciBilgileriOlustur.setHesapEmail(jTextField16.getText());
+        this.kullaniciBilgileriOlustur.setHesapID(jTextField17.getText());

@@ -3,10 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Yasin/Workspace/BilgiAgiServer/src/content/Icerik.java</file>
+            <file>file:/D:/Yasin/Workspace/BilgiAgiServer/src/icerik/KullaniciBilgileri.java</file>
             <file>file:/D:/Yasin/Workspace/BilgiAgiServer/src/gui/mainWindow.java</file>
-            <file>file:/D:/Yasin/Workspace/BilgiAgiServer/src/content/Mesaj.java</file>
-            <file>file:/D:/Yasin/Workspace/BilgiAgiServer/src/content/Giris.java</file>
+            <file>file:/D:/Yasin/Workspace/BilgiAgiServer/src/icerik/Icerik.java</file>
+            <file>file:/D:/Yasin/Workspace/BilgiAgiServer/src/icerik/Giris.java</file>
+            <file>file:/D:/Yasin/Workspace/BilgiAgiServer/src/gui/newClientWindow.java</file>
+            <file>file:/D:/Yasin/Workspace/BilgiAgiServer/src/icerik/Mesaj.java</file>
+            <file>file:/D:/Yasin/Workspace/BilgiAgiServer/src/Diger/newfile</file>
+            <file>file:/D:/Yasin/Workspace/BilgiAgiServer/src/gui/findClientWindow.java</file>
+            <file>file:/D:/Yasin/Workspace/BilgiAgiServer/src/sunucu/Veritabani.java</file>
         </group>
     </open-files>
 </project-private>

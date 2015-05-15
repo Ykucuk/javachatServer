@@ -9,8 +9,10 @@ package sunucu;
  *
  * @author Yasin
  */
+import icerik.KullaniciBilgileri;
 import gui.mainWindow;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class Veritabani {
 
@@ -19,9 +21,9 @@ public class Veritabani {
     public static String query;
     public static ResultSet sonuc;
     public static boolean durum;
-    
+
     private mainWindow mainWindow = null;
-    
+
     String isim = "root";
     String sifre = "";
     String adres = "jdbc:mysql://localhost:3306/bilgiagi";
@@ -42,16 +44,38 @@ public class Veritabani {
 
     }
 
-    public static void YeniHesapOlustur(String isim, String sifre) {
+    public static void YeniHesapOlustur(KullaniciBilgileri ref) {
         try {
-            query = "INSERT INTO hesap (isim, sifre, rank) VALUES (?,?,?,?)";
+            query = "INSERT INTO hesap (isim, soyisim, telefon, telefon2, email,"
+                    + "ulke, sehir, adress,"
+                    + "hesapAdi, hesapSifre, hesapOlusturmaTarihi, hesapDurum, hesapRutbe,"
+                    + "hesapEmail, hesapID) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            
+            
+            
             sorgu = baglanti.prepareStatement(query);
-            sorgu.setString(1, isim);
-            sorgu.setString(2, sifre);
-            sorgu.setString(3, "default");
-            sorgu.setInt(4, 0);
+
+            
+            sorgu.setString(1, ref.getIsim());
+            sorgu.setString(2, ref.getSoyisim());
+            sorgu.setString(3, ref.getTelefon());
+            sorgu.setString(4, ref.getTelefon2());
+            
+            sorgu.setString(5, ref.getEmail());
+            sorgu.setString(6, ref.getUlke());
+            sorgu.setString(7, ref.getSehir());
+            sorgu.setString(8, ref.getAdress());
+            
+            sorgu.setString(9, ref.getHesapAdi());
+            sorgu.setString(10, ref.getHesapSifre());
+            sorgu.setString(11, ref.getHesapOlusturmaTarih());
+            sorgu.setString(12, ref.getHesapDurum());
+            sorgu.setString(13, ref.getHesapRutbe());
+            sorgu.setString(14, ref.getHesapEmail());
+            sorgu.setString(15, ref.getHesapID());
+            
             sorgu.execute();
-            System.out.println("Basarili bir sekilde eklendi");
+            JOptionPane.showMessageDialog(null, "hesap olusturma islemi basari ile gerceklesti..", "Oldu!",JOptionPane.INFORMATION_MESSAGE);
 
             sorgu.close();
 
@@ -62,7 +86,7 @@ public class Veritabani {
 
     public static boolean KullaniciGiris(String isim, String sifre) {
         try {
-            query = "SELECT isim, sifre FROM hesap WHERE isim = ? AND sifre = ?";
+            query = "SELECT hesapAdi, hesapSifre FROM hesap WHERE isim = ? AND sifre = ?";
             sorgu = baglanti.prepareStatement(query);
             sorgu.setString(1, isim);
             sorgu.setString(2, sifre);
@@ -81,7 +105,7 @@ public class Veritabani {
 
     public static boolean KullaniciDurumu(String isim) {
         try {
-            query = "SELECT aktif FROM hesap WHERE isim = ?";
+            query = "SELECT hesapDurumu FROM hesap WHERE hesapAdi = ?";
             sorgu = baglanti.prepareStatement(query);
             sorgu.setString(1, isim);
             sonuc = sorgu.executeQuery();
@@ -101,7 +125,7 @@ public class Veritabani {
     public static void KullaniciDurumuAktif(String isim) {
         try {
             System.out.println("calistim..." + isim);
-            query = "UPDATE hesap SET aktif = ?  WHERE isim = ?";
+            query = "UPDATE hesap SET hesapDurumu = ?  WHERE hesapAdi = ?";
             sorgu = baglanti.prepareStatement(query);
             sorgu.setInt(1, 1);
             sorgu.setString(2, isim);
@@ -114,7 +138,7 @@ public class Veritabani {
     public static void KullaniciDurumuDeAktif(String isim) {
         try {
 
-            query = "UPDATE hesap SET aktif = ?  WHERE isim = ?";
+            query = "UPDATE hesap SET hesapDurumu = ?  WHERE hesapAdi = ?";
             sorgu = baglanti.prepareStatement(query);
             sorgu.setInt(1, 0);
             sorgu.setString(2, isim);
@@ -126,7 +150,7 @@ public class Veritabani {
 
     public static boolean KullaniciBul(String isim) {
         try {
-            query = "SELECT isim FROM hesap WHERE isim = ?";
+            query = "SELECT hesapAdi FROM hesap WHERE hesapAdi = ?";
             sorgu = baglanti.prepareStatement(query);
             sorgu.setString(1, isim);
             sonuc = sorgu.executeQuery();
@@ -141,6 +165,24 @@ public class Veritabani {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static KullaniciBilgileri KullaniciBilgileri(String isim) {
+        try {
+            
+            query = "SELECT * FROM hesap WHERE isim = ?";
+            sorgu = baglanti.prepareStatement(query);
+            sorgu.setString(1, isim);
+            sonuc = sorgu.executeQuery();
+            sonuc.next();
+            KullaniciBilgileri kullaniciBilgileriSinif = new KullaniciBilgileri();
+            kullaniciBilgileriSinif.setSonuc(sonuc);
+            return kullaniciBilgileriSinif;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     public static boolean GirisYap(String isim, String sifre) {

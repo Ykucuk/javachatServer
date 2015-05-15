@@ -9,7 +9,10 @@ package sunucu;
  *
  * @author Yasin
  */
-import content.*;
+import icerik.Icerik;
+import icerik.Mesaj;
+import icerik.Giris;
+import icerik.Durum;
 import java.net.Socket;
 import java.io.*;
 
