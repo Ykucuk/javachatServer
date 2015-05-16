@@ -6,10 +6,6 @@
 package gui;
 
 import icerik.KullaniciBilgileri;
-import java.awt.Color;
-import java.awt.TrayIcon;
-import javax.swing.JOptionPane;
-import sunucu.Veritabani;
 
 /**
  *
@@ -20,11 +16,12 @@ public class findClientWindow extends javax.swing.JInternalFrame {
     /**
      * Creates new form findClientWindow
      */
-    KullaniciBilgileri kullanicibilgileri;
+    public KullaniciBilgileri kullanicibilgileri;
 
     public findClientWindow() {
         initComponents();
         this.setVisible(true);
+        this.moveToFront();
     }
 
     /**
@@ -37,11 +34,6 @@ public class findClientWindow extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
@@ -76,88 +68,56 @@ public class findClientWindow extends javax.swing.JInternalFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
-        setTitle("Kullanici yonetim paneli");
-
-        jLabel1.setText("Kullanici adi");
-
-        jButton1.setText("Ara");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Hesap adi");
-
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Ozel id");
-        jRadioButton2.setEnabled(false);
+        setTitle("Kullanici arama");
 
         jLabel2.setText("Isim");
 
-        jTextField2.setText("jTextField2");
-
         jLabel3.setText("Soyisim");
-
-        jTextField3.setText("jTextField2");
-
-        jTextField4.setText("jTextField2");
 
         jLabel4.setText("Telefon");
 
-        jTextField5.setText("jTextField2");
-
         jLabel5.setText("Mobil");
 
-        jTextField7.setText("jTextField2");
-
         jLabel6.setText("Ulke");
-
-        jTextField8.setText("jTextField2");
 
         jLabel7.setText("Sehir");
 
         jLabel8.setText("Email");
 
-        jTextField9.setText("jTextField2");
-
-        jTextField10.setText("jTextField2");
-
         jLabel9.setText("Adres");
-
-        jTextField11.setText("jTextField2");
 
         jLabel10.setText("P.Kod");
 
-        jTextField12.setText("jTextField2");
-
         jLabel11.setText("Durum");
-
-        jTextField13.setText("jTextField2");
 
         jLabel12.setText("S. Giris");
 
         jLabel13.setText("Hesap");
 
-        jTextField15.setText("jTextField2");
-
         jLabel14.setText("Sifre");
 
-        jButton2.setText("Bilgileri duzenle");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resim/Gnome-Software-Update-Available-32.png"))); // NOI18N
+        jButton2.setText("Bilgileri guncelle");
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resim/Gnome-Mail-Message-New-32.png"))); // NOI18N
         jButton3.setText("Ozel Mesaj");
 
-        jPasswordField1.setText("jtextpassword");
-
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resim/Gnome-Appointment-Soon-32.png"))); // NOI18N
         jButton4.setText("Hesabi dondur");
 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resim/Gnome-Application-Exit-32.png"))); // NOI18N
         jButton5.setText("sistemden cikart");
 
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resim/Gnome-Dialog-Warning-32.png"))); // NOI18N
         jButton6.setText("hesabi sil");
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 153, 0));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resim/Gnome-Accessories-Text-Editor-32.png"))); // NOI18N
+        jLabel1.setText("Kullanici bilgileri ve duzenleme");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -167,23 +127,18 @@ public class findClientWindow extends javax.swing.JInternalFrame {
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addComponent(jSeparator3)
             .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(10, 10, 10))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButton2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap()
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -205,10 +160,10 @@ public class findClientWindow extends javax.swing.JInternalFrame {
                                             .addComponent(jLabel11))))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                                    .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                                    .addComponent(jTextField15, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                                    .addComponent(jTextField13, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                                    .addComponent(jTextField8)
+                                    .addComponent(jTextField11)
+                                    .addComponent(jTextField15)
+                                    .addComponent(jTextField13)
                                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,35 +181,23 @@ public class findClientWindow extends javax.swing.JInternalFrame {
                                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                            .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField10, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField12, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                            .addComponent(jPasswordField1))))
+                            .addComponent(jTextField3)
+                            .addComponent(jTextField4)
+                            .addComponent(jPasswordField1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -306,37 +249,41 @@ public class findClientWindow extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton6)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        if (jTextField1.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Lutfen gerekli alanlari doldurunuz.", "Uyari!", JOptionPane.WARNING_MESSAGE);
-        } else {
-            if (Veritabani.KullaniciBul(jTextField1.getText())) {
-                this.kullanicibilgileri = Veritabani.KullaniciBilgileri(jTextField1.getText());
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Kullanici bulunamadi ! Lutfen girdiginiz bilgileri kontrol ediniz.", "Uyari!", JOptionPane.WARNING_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    public void KullaniciBilgileriniYaz() {
+        jTextField2.setText(this.getKullanicibilgileri().getIsim());
 
-    private void KullaniciBilgileriniYaz() {
+        jTextField3.setText(this.getKullanicibilgileri().getSoyisim());
 
+        jTextField5.setText(this.getKullanicibilgileri().getTelefon());
+        jTextField4.setText(this.getKullanicibilgileri().getTelefon2());
+        
+        jTextField9.setText(this.getKullanicibilgileri().getEmail());
+
+        jTextField7.setText(this.getKullanicibilgileri().getUlke());
+
+        jTextField8.setText(this.getKullanicibilgileri().getSehir());
+        jTextField11.setText(this.getKullanicibilgileri().getAdress());
+
+        jTextField15.setText(this.getKullanicibilgileri().getHesapAdi());
+        jPasswordField1.setText(this.getKullanicibilgileri().getHesapSifre());
+        jTextField13.setText(this.getKullanicibilgileri().getHesapDurum());
+        jTextField12.setText(this.getKullanicibilgileri().getHesapSonGiris());
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -357,12 +304,9 @@ public class findClientWindow extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
@@ -376,4 +320,18 @@ public class findClientWindow extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the kullanicibilgileri
+     */
+    public KullaniciBilgileri getKullanicibilgileri() {
+        return kullanicibilgileri;
+    }
+
+    /**
+     * @param kullanicibilgileri the kullanicibilgileri to set
+     */
+    public void setKullanicibilgileri(KullaniciBilgileri kullanicibilgileri) {
+        this.kullanicibilgileri = kullanicibilgileri;
+    }
 }
