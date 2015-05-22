@@ -15,7 +15,7 @@ public class Giris extends Icerik {
     private String hesapSifre;
 
     public Giris() {
-        setTur('G');
+        setTur(SunucuKomut._GIRIS);
     }
 
     /**

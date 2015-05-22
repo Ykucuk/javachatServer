@@ -36,6 +36,7 @@ public class Veritabani {
             this.mainWindow.OutputAdd("Veritabani baglantisi basarili bir sekilde saglandi.");
             durum = true;
         } catch (Exception e) {
+            this.mainWindow.OutputAdd("Veritabani baglantisi basarisiz !");
             System.err.println(e.getMessage());
         }
     }
@@ -102,12 +103,12 @@ public class Veritabani {
 
     public static boolean KullaniciDurumu(String isim) {
         try {
-            query = "SELECT hesapDurumu FROM hesap WHERE hesapAdi = ?";
+            query = "SELECT hesapDurum FROM hesap WHERE hesapAdi = ?";
             sorgu = baglanti.prepareStatement(query);
             sorgu.setString(1, isim);
             sonuc = sorgu.executeQuery();
             sonuc.next();
-            if (sonuc.getInt("aktif") == 1) {
+            if (sonuc.getInt("hesapDurum") == 1) {
                 return true;
             } else {
                 return false;
@@ -121,11 +122,10 @@ public class Veritabani {
 
     public static void KullaniciDurumuAktif(String isim) {
         try {
-            System.out.println("calistim..." + isim);
-            query = "UPDATE hesap SET hesapDurumu = ?  WHERE hesapAdi = ?";
+            System.out.println("hesap sistem aktif olarak islenmistir.." + isim);
+            query = "UPDATE hesap SET hesapDurum = '1'  WHERE hesapAdi = ?";
             sorgu = baglanti.prepareStatement(query);
-            sorgu.setInt(1, 1);
-            sorgu.setString(2, isim);
+            sorgu.setString(1, isim);
             sorgu.execute();
         } catch (Exception e) {
             e.getStackTrace();
@@ -135,10 +135,9 @@ public class Veritabani {
     public static void KullaniciDurumuDeAktif(String isim) {
         try {
 
-            query = "UPDATE hesap SET hesapDurumu = ?  WHERE hesapAdi = ?";
+            query = "UPDATE hesap SET hesapDurum = '0'  WHERE hesapAdi = ?";
             sorgu = baglanti.prepareStatement(query);
-            sorgu.setInt(1, 0);
-            sorgu.setString(2, isim);
+            sorgu.setString(1, isim);
             sorgu.execute();
         } catch (Exception e) {
             e.getStackTrace();
